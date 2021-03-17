@@ -7,22 +7,22 @@ document.addEventListener('DOMContentLoaded', (event) => {
     }
   
     // UPDATE
-    const changeSleepBtns = document.querySelectorAll('.change-sleep');
+    const devourBurgBtn = document.querySelectorAll('.devour-burger');
   
     // Set up the event listener for the create button
-    if (changeSleepBtns) {
-      changeSleepBtns.forEach((button) => {
+    if (devourBurgBtn) {
+      devourBurgBtn.forEach((button) => {
         button.addEventListener('click', (e) => {
           console.log('test');
           // Grabs the id of the element that goes by the name, "id"
           const id = e.target.getAttribute('data-id');
-          const newSleep = e.target.getAttribute('data-newsleep');
+          const newBurg = e.target.getAttribute('data-newdevour');
   
-          const newSleepState = {
-            sleepy: newSleep,
+          const newBurgMenu = {
+            devoured: newBurg,
           };
   
-          fetch(`/api/cats/${id}`, {
+          fetch(`/api/burgers/${id}`, {
             method: 'PUT',
             headers: {
               Accept: 'application/json',
@@ -30,12 +30,12 @@ document.addEventListener('DOMContentLoaded', (event) => {
             },
   
             // make sure to serialize the JSON body
-            body: JSON.stringify(newSleepState),
+            body: JSON.stringify(newBurgMenu),
           }).then((response) => {
             // Check that the response is all good
             // Reload the page so the user can see the new quote
             if (response.ok) {
-              console.log(`changed sleep to: ${newSleep}`);
+              console.log(`changed devoured to: ${newBurg}`);
               location.reload('/');
             } else {
               alert('something went wrong!');
@@ -52,13 +52,13 @@ document.addEventListener('DOMContentLoaded', (event) => {
       createBurgBtn.addEventListener('submit', (e) => {
         e.preventDefault();
   
-        // Grabs the value of the textarea that goes by the name, "quote"
+        // Grabs the value of the textarea that goes by the name, "burger"
         const newBurg = {
           name: document.getElementById('burg').value.trim(),
           // devour: document.getElementById('devour').checked,
         };
   
-        // Send POST request to create a new quote
+        // Send POST request to create a new burger
         fetch('/api/burgers', {
           method: 'POST',
           headers: {
@@ -72,7 +72,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
           // Empty the form
           document.getElementById('burg').value = '';
   
-          // Reload the page so the user can see the new quote
+          // Reload the page so the user can see the new burger
           console.log('Created a new burger!');
           location.reload();
         });

@@ -8,40 +8,58 @@ const burger = require("../models/burger.js");
 
 // Create all our routes and set up logic within those routes where required.
 router.get('/', (req, res) => {
-    // cat.all((data) => {
-    //   const hbsObject = {
-    //     cats: data,
-    //   };
-    //   console.log('hbsObject', hbsObject);
-    //   res.render('index', hbsObject);
-    // });
+    burger.all((data) => {
+      const hbsObject = {
+        burgers: data,
+      };
+      console.log('hbsObject', hbsObject);
+      res.render('index', hbsObject);
+    });
   });
   
-  router.post('/api/cats', (req, res) => {
-    // cat.create(['name', 'sleepy'], [req.body.name, req.body.sleepy], (result) => {
-    //   // Send back the ID of the new quote
-    //   res.json({ id: result.insertId });
-    // });
+  router.post('/api/burgers', (req, res) => {
+    burger.create(['burger_name', 'devoured'], [req.body.name, req.body.devour], (result) => {
+      // Send back the ID of the new quote
+      res.json({ id: result.insertId });
+    });
   });
   
-  router.put('/api/cats/:id', (req, res) => {
-    // const condition = `id = ${req.params.id}`;
+  router.put('/api/burgers/:id', (req, res) => {
+    const condition = `id = ${req.params.id}`;
   
-    // console.log('condition', condition);
+    console.log('condition', condition);
   
-    // cat.update(
-    //   {
-    //     sleepy: req.body.sleepy,
-    //   },
-    //   condition,
-    //   (result) => {
-    //     if (result.changedRows === 0) {
-    //       // If no rows were changed, then the ID must not exist, so 404
-    //       return res.status(404).end();
-    //     }
-    //     res.status(200).end();
-    //   }
-    // );
+    burger.update(
+      {
+        devour: req.body.devour,
+      },
+      condition,
+      (result) => {
+        if (result.changedRows === 0) {
+          // If no rows were changed, then the ID must not exist, so 404
+          return res.status(404).end();
+        }
+        res.status(200).end();
+      }
+    );
+  });
+
+  
+  //delete a burger - 
+  router.delete('/api/burgers/:id', (req, res) => {
+    connection.query('DELETE FROM burgers WHERE id = ?',
+      [req.param.id],
+      (err, result) => {
+        if(err) {
+          return res.status(500).end();
+        }
+        if (result.affectedRows === 0) {
+          return res.status(404).end();
+        }
+        res.status(200).end();
+        
+      }  
+    );
   });
 
 

@@ -17,18 +17,10 @@ const exphbs = require('express-handlebars');
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
 app.set('view engine', 'handlebars');
 
-
-app.get('/', (req, res) => {
-  connection.query('SELECT * FROM  burgers;', (err, data) => {
-  res.render('index', {  })
-  })
-}) // from first excercise with employees
-
-
 // Import routes and give the server access to them.
-// const routes = require('./controllers/burgers_controller.js');
+const routes = require('./controllers/burgers_controller.js');
 
-// app.use(routes);
+app.use(routes);
 
 // Start our server so that it can begin listening to client requests.
 app.listen(PORT, () =>
