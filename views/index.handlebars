@@ -10,7 +10,8 @@
   {{#each burgers}}
   {{#unless devoured}}
     <li>
-      <button burger-burgname="{{this.burger_name}}" class="delburg">Devour!</button>
+      {{this.burger_name}}
+      <button burger-burgname="{{this.id}}" class="delburg">Devour!</button>
     </li>
   {{/unless}}
   {{/each}}
@@ -21,7 +22,7 @@
 <ul>
   {{#each burgers}}
   {{#if devoured}}
-  {{!-- {{> cats/cat-block sleep=false}} --}}
+    {{this.burger_name}}
   {{/if}}
   {{/each}}
 </ul>
