@@ -15,12 +15,13 @@ const orm = {
   },
 
 
-  insertOne(tableInput, colToSearch, cb) {
-    const queryString = 'INSERT INTO ?? SET ??';
+  insertOne(tableInput, newBurger, cb) {
+    const queryString = 'INSERT INTO ?? SET ?';
     connection.query(
       queryString,
-      [tableInput, colToSearch],
+      [tableInput, newBurger],
       (err, result) => {
+        console.log(newBurger)
         if (err) throw err;
         cb(result);
       }
@@ -28,11 +29,11 @@ const orm = {
   },
 
 
-  updateOne(tableInput, colToSearch, valOfCol, cb) {
+  updateOne(tableInput, burger, colToSearch, valOfCol, cb) {
     const queryString = 'UPDATE ?? SET ? WHERE ?? = ?';
     connection.query(
       queryString,
-      [tableInput, colToSearch, valOfCol, cb],
+      [tableInput, burger, colToSearch, valOfCol],
       (err, result) => {
         if (err) throw err;
         cb(result);
