@@ -45,21 +45,21 @@ document.addEventListener('DOMContentLoaded', (event) => {
       });
     }
   
-    // CREATE
-    const createCatBtn = document.getElementById('create-form');
+    // CREATE - updated from cat to burger mostly
+    const createBurgBtn = document.getElementById('create-form');
   
-    if (createCatBtn) {
-      createCatBtn.addEventListener('submit', (e) => {
+    if (createBurgBtn) {
+      createBurgBtn.addEventListener('submit', (e) => {
         e.preventDefault();
   
         // Grabs the value of the textarea that goes by the name, "quote"
-        const newCat = {
-          name: document.getElementById('ca').value.trim(),
-          sleepy: document.getElementById('sleepy').checked,
+        const newBurg = {
+          name: document.getElementById('burg').value.trim(),
+          // devour: document.getElementById('devour').checked,
         };
   
         // Send POST request to create a new quote
-        fetch('/api/cats', {
+        fetch('/api/burgers', {
           method: 'POST',
           headers: {
             Accept: 'application/json',
@@ -67,16 +67,38 @@ document.addEventListener('DOMContentLoaded', (event) => {
           },
   
           // Make sure to serialize the JSON body
-          body: JSON.stringify(newCat),
+          body: JSON.stringify(newBurg),
         }).then(() => {
           // Empty the form
-          document.getElementById('ca').value = '';
+          document.getElementById('burg').value = '';
   
           // Reload the page so the user can see the new quote
-          console.log('Created a new cat!');
+          console.log('Created a new burger!');
           location.reload();
         });
       });
     }
   });
+
+  // DELETE - Devour
+  // Get the button
+  const devourBurgerBtns = document.querySelectorAll('.delburg')
+
+  // Set up the event listeners for each delete button
+  devourBurgerBtns.forEach(button => {
+    button.addEventListener('click', (e) => {
+      const id = e.target.getAttribute('burger-burgname')
+      console.log("devour burger name", id)
+
+      // Send the delete request
+      fetch(`/api/burgers/${id}`, {
+        method: 'DELETE',
+      }).then(() => {
+        console.log(`Deleted ID: ${id}`)
+
+        // Reload the page
+        location.reload()
+      })
+    })
+  })
   
