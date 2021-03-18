@@ -6,13 +6,13 @@ const burger = {
       orm.selectAll('burgers', (res) => cb(res));
     },
     // The variables cols and vals are arrays.
-    insertOne(colToSearch, cb) {
-      orm.insertOne('burgers', colToSearch, (res) => cb(res));
+    insertOne(newBurger, cb) {
+      orm.insertOne('burgers', newBurger, (res) => cb(res));
     },
   
-  //   update(objColVals, condition, cb) {
-  //   //   orm.update('burgers', objColVals, condition, (res) => cb(res));
-  //   },
+    updateOne(burger, valOfCol, cb) {
+      orm.updateOne('burgers', burger, 'id', valOfCol, (res) => cb(res));
+    },
   };
   
   // Export the database functions for the controller 

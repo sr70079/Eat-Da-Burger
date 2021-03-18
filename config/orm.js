@@ -33,7 +33,7 @@ const orm = {
     const queryString = 'UPDATE ?? SET ? WHERE ?? = ?';
     connection.query(
       queryString,
-      [tableInput, burger, colToSearch, valOfCol],
+      [tableInput, burger, colToSearch, valOfCol, cb],
       (err, result) => {
         if (err) throw err;
         cb(result);

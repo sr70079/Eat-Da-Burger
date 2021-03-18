@@ -16,10 +16,11 @@ document.addEventListener('DOMContentLoaded', (event) => {
           console.log('test');
           // Grabs the id of the element that goes by the name, "id"
           const id = e.target.getAttribute('data-id');
-          const newBurg = e.target.getAttribute('data-newdevour');
+
+          // const newBurg = e.target.getAttribute('data-newdevour');
   
-          const newBurgMenu = {
-            devoured: newBurg,
+          const eatBurg = {
+            devoured: true,
           };
   
           fetch(`/api/burgers/${id}`, {
@@ -30,12 +31,12 @@ document.addEventListener('DOMContentLoaded', (event) => {
             },
   
             // make sure to serialize the JSON body
-            body: JSON.stringify(newBurgMenu),
+            body: JSON.stringify(eatBurg),
           }).then((response) => {
             // Check that the response is all good
             // Reload the page so the user can see the new quote
             if (response.ok) {
-              console.log(`changed devoured to: ${newBurg}`);
+              console.log(`changed devoured to: ${eatBurg}`);
               location.reload('/');
             } else {
               alert('something went wrong!');
@@ -82,23 +83,23 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
   // DELETE - Devour
   // Get the button
-  const devourBurgerBtns = document.querySelectorAll('.delburg')
+  // const devourBurgerBtns = document.querySelectorAll('.delburg')
 
-  // Set up the event listeners for each delete button
-  devourBurgerBtns.forEach(button => {
-    button.addEventListener('click', (e) => {
-      const id = e.target.getAttribute('burger-burgname')
-      console.log("devour burger name", id)
+  // // Set up the event listeners for each delete button
+  // devourBurgerBtns.forEach(button => {
+  //   button.addEventListener('click', (e) => {
+  //     const id = e.target.getAttribute('burger-burgname')
+  //     console.log("devour burger name", id)
 
-      // Send the delete request
-      fetch(`/api/burgers/${id}`, {
-        method: 'DELETE',
-      }).then(() => {
-        console.log(`Deleted ID: ${id}`)
+  //     // Send the delete request
+  //     fetch(`/api/burgers/${id}`, {
+  //       method: 'DELETE',
+  //     }).then(() => {
+  //       console.log(`Deleted ID: ${id}`)
 
-        // Reload the page
-        location.reload()
-      })
-    })
-  })
+  //       // Reload the page
+  //       location.reload()
+  //     })
+  //   })
+  // })
   
