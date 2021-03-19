@@ -1,6 +1,11 @@
-/* copy of cat app will update with burger needs */
+
 body {
     text-align: center;
+}
+
+h1 {
+    margin: 30px;
+    padding: 20px;
 }
 
 .center {
@@ -11,11 +16,16 @@ body {
 }
 
 li {
-    padding: 5px;
-    margin: 5px;
+    padding: 10px;
+    margin: 10px;
     background: #faebd7;
 }
 
 form {
+    display: inline-block;
+}
+
+.devour-burger {
+    position: auto; 
     display: inline-block;
 }

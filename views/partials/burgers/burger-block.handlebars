@@ -1,33 +1,10 @@
 <div>
-	{{burger_name}}	
+	
+	{{burger_name}}
 
 		{{#if devoured}}
 		{{else}}
 		<button class="devour-burger btn btn-dark" data-id="{{id}}" data-newdevour="{{devoured}}">Eat me!</button>
 		{{/if}}
 
-
-	
 </div>
-
-{{!-- <button class="delete-burger" data-id="{{this.id}}">DELETE!</button> --}}
-
-{{!-- <div>
-	{{burger_name}}
-	{{#unless devoured}}
-	<button class="devour-burger btn btn-dark" type="submit" data-id="{{this.id}}">
-		nomnom!
-	</button>
-	{{/unless}}
-</div> --}}
-
-{{!-- <ul class="list-group burgersLeft">
-	{{#each burgers}}
-	{{#unless devoured}}
-
-	<li class="list-group-item">
-		{{burger_name}} <button data-id="{{id}}" class="btn devour bg-success">Devour Me!</button>
-	</li>
-	{{/unless}}
-	{{/each}}
-</ul> --}}

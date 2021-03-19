@@ -13,6 +13,7 @@ const burger = {
     updateOne(burger, valOfCol, cb) {
       orm.updateOne('burgers', burger, 'id', valOfCol, (res) => cb(res));
     },
+
   };
   
   // Export the database functions for the controller 

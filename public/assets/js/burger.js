@@ -79,27 +79,8 @@ document.addEventListener('DOMContentLoaded', (event) => {
         });
       });
     }
+
   });
 
-  // DELETE - Devour
-  // Get the button
-  // const devourBurgerBtns = document.querySelectorAll('.delburg')
-
-  // // Set up the event listeners for each delete button
-  // devourBurgerBtns.forEach(button => {
-  //   button.addEventListener('click', (e) => {
-  //     const id = e.target.getAttribute('burger-burgname')
-  //     console.log("devour burger name", id)
-
-  //     // Send the delete request
-  //     fetch(`/api/burgers/${id}`, {
-  //       method: 'DELETE',
-  //     }).then(() => {
-  //       console.log(`Deleted ID: ${id}`)
-
-  //       // Reload the page
-  //       location.reload()
-  //     })
-  //   })
-  // })
+  
   
