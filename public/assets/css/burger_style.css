@@ -1,6 +1,15 @@
 
 body {
     text-align: center;
+    background-color: coral !important;
+}
+
+/* .container {
+    background-color: coral;
+} */
+
+img {
+    margin: 10px;
 }
 
 h1 {
@@ -23,6 +32,9 @@ li {
 
 form {
     display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
 }
 
 .devour-burger {
